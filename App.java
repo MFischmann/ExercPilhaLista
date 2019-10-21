@@ -6,11 +6,14 @@ public class App {
         queue.enqueue(2);
         queue.enqueue(3);
         furaFila(queue, 6);
+        queue.enqueue(7);
+        furaFila(queue, 8);
+        queue.enqueue(9);
         while (!queue.isEmpty()) {
             Integer aux = queue.dequeue(); // remove da fila
             System.out.println(aux); // imprime
         }
-        
+        /*
         ArrayStack stack = new ArrayStack();
         stack.push(1);
         stack.push(2);
@@ -25,7 +28,7 @@ public class App {
         System.out.println(checkExp("(){[()]}[()()]"));
         System.out.println(checkExp("((()"));
         System.out.println(checkExp("(){[(]]}[()()]"));
-
+        */
     }
 
     public static boolean checkExp(String s){
@@ -84,13 +87,11 @@ public class App {
     }
 
     public static LinkedQueue furaFila(LinkedQueue q, int elem){
-        LinkedQueue aux = new LinkedQueue();
-        while(!q.isEmpty()){
-            aux.enqueue(q.dequeue());
-        }
+        //LinkedQueue aux = new LinkedQueue();
+        int inicialSize = q.size();
         q.enqueue(elem);
-        while(!aux.isEmpty()){
-            q.enqueue(aux.dequeue());
+        for(int i = 0; i < inicialSize;i++){
+        q.enqueue(q.dequeue());
         }
         return q;
     }
