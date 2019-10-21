@@ -29,6 +29,10 @@ public class App {
         System.out.println(checkExp("((()"));
         System.out.println(checkExp("(){[(]]}[()()]"));
         */
+
+        System.out.println(ehPalindromo("aba"));
+        System.out.println(ehPalindromo("abccba"));
+        System.out.println(ehPalindromo("Rotor"));
     }
 
     public static boolean checkExp(String s){
@@ -94,5 +98,22 @@ public class App {
         q.enqueue(q.dequeue());
         }
         return q;
+    }
+
+    public static boolean ehPalindromo(String s){
+        ArrayStackChar pilhaC = new ArrayStackChar();
+        s = s.toLowerCase();
+        int halfS = s.length()/2;
+        int modS = s.length()%2;
+        for(int i = 0; i < halfS; i++){
+            pilhaC.push(s.charAt(i));
+        }
+        for(int j = halfS + modS; j < s.length();j++){
+            if(pilhaC.pop()!=s.charAt(j)){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
