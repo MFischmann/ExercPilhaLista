@@ -9,30 +9,43 @@ public class App {
         queue.enqueue(7);
         furaFila(queue, 8);
         queue.enqueue(9);
-        while (!queue.isEmpty()) {
+        /*while (!queue.isEmpty()) {
             Integer aux = queue.dequeue(); // remove da fila
             System.out.println(aux); // imprime
-        }
-        /*
+        }*/
+        
         ArrayStack stack = new ArrayStack();
         stack.push(1);
         stack.push(2);
         stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        stack.push(6);
+        stack.push(7);
+        stack.push(8);
+        System.out.println(pilhaContem(stack, 10));
         while (!stack.isEmpty()) {
             System.out.println(stack.pop());
         }   
-        
+        /*
         System.out.println(checkExp("()"));
         System.out.println(checkExp("())"));
         System.out.println(checkExp("()]]"));
         System.out.println(checkExp("(){[()]}[()()]"));
         System.out.println(checkExp("((()"));
         System.out.println(checkExp("(){[(]]}[()()]"));
-        */
+        
 
         System.out.println(ehPalindromo("aba"));
         System.out.println(ehPalindromo("abccba"));
         System.out.println(ehPalindromo("Rotor"));
+
+        System.out.println(pilhaContem(stack, 1));
+        System.out.println(stack.size());
+        System.out.println(pilhaContem(stack, 3));
+        System.out.println(stack.size());
+        System.out.println(pilhaContem(stack, 4));
+        System.out.println(stack.size());*/
     }
 
     public static boolean checkExp(String s){
@@ -115,5 +128,30 @@ public class App {
         }
 
         return true;
+    }
+
+    public static boolean pilhaContem(ArrayStack pilha ,int e){
+        LinkedQueue q = new LinkedQueue();
+        boolean contem = false;
+        while(!pilha.isEmpty()){
+            if(pilha.top()==e){
+                contem = true;
+                break;
+            }
+            q.enqueue(pilha.pop());
+        }
+        int tamFila = q.size();
+        while(!q.isEmpty()){
+            pilha.push(q.dequeue());
+        }
+        for(int i = 0; i < tamFila; i++){
+            q.enqueue(pilha.pop());
+        }
+        while(!q.isEmpty()){
+            pilha.push(q.dequeue());
+        }
+
+
+        return contem;
     }
 }
