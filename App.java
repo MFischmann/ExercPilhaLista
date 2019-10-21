@@ -2,7 +2,7 @@
 public class App {
     public static void main(String[] args) {
         LinkedQueue queue = new LinkedQueue();
-        queue.enqueue(1);
+        /*queue.enqueue(1);
         queue.enqueue(2);
         queue.enqueue(3);
         furaFila(queue, 6);
@@ -12,7 +12,7 @@ public class App {
         /*while (!queue.isEmpty()) {
             Integer aux = queue.dequeue(); // remove da fila
             System.out.println(aux); // imprime
-        }*/
+        }
         
         ArrayStack stack = new ArrayStack();
         stack.push(1);
@@ -46,6 +46,17 @@ public class App {
         System.out.println(stack.size());
         System.out.println(pilhaContem(stack, 4));
         System.out.println(stack.size());*/
+
+        Deque deck = new Deque();
+        deck.addLast(1);
+        deck.addLast(2);
+        deck.addLast(3);
+        deck.addLast(4);
+        System.out.println(deck.removeFirst());
+        System.out.println(deck.getFirst());
+        System.out.println(deck.removeLast());
+        System.out.println(deck.getLast());
+        System.out.println(deck.getLast());
     }
 
     public static boolean checkExp(String s){
