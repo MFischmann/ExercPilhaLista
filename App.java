@@ -12,22 +12,19 @@ public class App {
         /*while (!queue.isEmpty()) {
             Integer aux = queue.dequeue(); // remove da fila
             System.out.println(aux); // imprime
-        }
+        }*/
         
         ArrayStack stack = new ArrayStack();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
         stack.push(4);
-        stack.push(5);
-        stack.push(6);
-        stack.push(7);
-        stack.push(8);
-        System.out.println(pilhaContem(stack, 10));
+        stack.push(3);
+        stack.push(2);
+        stack.push(1);
+        //System.out.println(pilhaContem(stack, 10));
+        /*
         while (!stack.isEmpty()) {
             System.out.println(stack.pop());
         }   
-        /*
+        
         System.out.println(checkExp("()"));
         System.out.println(checkExp("())"));
         System.out.println(checkExp("()]]"));
@@ -45,7 +42,7 @@ public class App {
         System.out.println(pilhaContem(stack, 3));
         System.out.println(stack.size());
         System.out.println(pilhaContem(stack, 4));
-        System.out.println(stack.size());*/
+        System.out.println(stack.size());
 
         Deque deck = new Deque();
         deck.addLast(1);
@@ -56,7 +53,17 @@ public class App {
         System.out.println(deck.getFirst());
         System.out.println(deck.removeLast());
         System.out.println(deck.getLast());
-        System.out.println(deck.getLast());
+        System.out.println(deck.getLast());*/
+
+        ArrayStack stack2 = new ArrayStack();
+        stack2.push(8);
+        stack2.push(7);
+        stack2.push(6);
+        stack2.push(5);
+        ArrayStack stack3 = unePilha(stack, stack2);
+        while (!stack3.isEmpty()) {
+            System.out.println(stack3.pop());
+        }   
     }
 
     public static boolean checkExp(String s){
@@ -164,5 +171,23 @@ public class App {
 
 
         return contem;
+    }
+
+    public static ArrayStack unePilha(ArrayStack s, ArrayStack t){
+        Deque d = new Deque();
+        while(!s.isEmpty()){
+            d.addFirst(s.pop());
+        }
+        while(!t.isEmpty()){
+            d.addFirst(t.pop());
+        }
+
+        while(!d.isEmpty()){
+            t.push(d.removeLast());
+        }
+        while(!t.isEmpty()){
+            s.push(t.pop());
+        }
+        return s;
     }
 }
